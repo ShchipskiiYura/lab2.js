@@ -35,21 +35,6 @@ app.get('/tasks', function(req, res) {
     });
 });
 
-// New
-app.get('/tasks/new', function(req, res) {
-  res.render('tasks/new');
-});
-
-// Show
-app.get('/tasks/(:id)', function(req, res) {
-  mongo
-    .collection('tasks')
-    .findOne({ _id: ObjectId(req.params.id) })
-    .then(function(tasksItem) {
-      res.render('tasks/show', { tasksItem });
-    });
-});
-
 // Delete
 app.get('/:id/delete', function(req, res) {
   mongo
